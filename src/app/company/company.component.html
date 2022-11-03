@@ -1,1 +1,28 @@
 <p>company works!</p>
+<h1>Welcome to E-StockMarket Application</h1>
+
+<div>
+    <form #compForm="ngForm" (ngSubmit)="addCompanyDetails()">
+        <input name="companyCode" class="form-control" type="number" placeholder="Enter company code" [(ngModel)]="comObj.companyCode" required>
+        <br>
+        <input name="companyName" class="form-control" type="string" placeholder="Enter company name" [(ngModel)]="comObj.companyName" required>
+        <br>
+        <input name="companyCeo" class="form-control" type="string" placeholder="Enter company ceo" [(ngModel)]="comObj.companyCeo" required>
+        <br>
+        <input name="website" class="form-control" type="string" placeholder="Enter company website" [(ngModel)]="comObj.website" required>
+        <br>
+        <input name="turnover" class="form-control" type="number" placeholder="Enter company turnover" [(ngModel)]="comObj.turnover" required>
+        <br>
+        <button type="submit">Add Company Details</button>
+    </form>
+</div>
+<hr>
+<marquee>See Company List below</marquee>
+<div>
+    <button type="button" (click)="getCompanyList()">View Company List</button><br><br>
+
+    <div *ngFor="let c of comArr">
+       {{c.companyCode}}-->{{c.companyName}}-->{{c.companyCeo}}-->{{c.website}}-->{{c.turnover}}-->
+       <button type="button" class="btn btn-danger" (click)="deleteCompany(c.companyCode)">Delete Company</button>
+    </div>
+</div>

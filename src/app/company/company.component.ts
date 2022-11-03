@@ -37,7 +37,9 @@ export class CompanyComponent implements OnInit {
   getCompanyList(){
     this.companyService.getAllCompany().subscribe(data=>{
       //here sending data into comArr
+      console.log("inside getCompanyList: "+data);
       this.comArr = Object.values(data);
+      console.log("Printing..."+this.comArr)
     },
     error=>{
       console.log(error);

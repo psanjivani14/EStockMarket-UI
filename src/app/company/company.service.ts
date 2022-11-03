@@ -26,7 +26,9 @@ export class CompanyService {
 
   getAllCompany():Observable<Array<Company>>
   {
+    console.log("inside getAllCompany service:: "+this.http.get<Array<Company>>(this.apiGet))
     return this.http.get<Array<Company>>(this.apiGet);
+    
   }
 
   deleteCompany(cid:number):Observable<Company>
