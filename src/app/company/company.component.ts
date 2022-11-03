@@ -25,8 +25,11 @@ export class CompanyComponent implements OnInit {
   addCompanyDetails()
   {
     this.companyService.addCompany(this.comObj).subscribe(data=>{
+      console.log("inside addCompanyDetails component1 "+data)
       this.data = JSON.stringify(data);
+      console.log("inside addCompanyDetails component2 "+data)
       this.comArr.push(this.data);
+      console.log("inside addCompanyDetails component2 "+this.comArr);
       window.location.reload();
     },
     error=>{
@@ -35,15 +38,10 @@ export class CompanyComponent implements OnInit {
   }
 
   getCompanyList(){
-    this.companyService.getAllCompany().subscribe(data=>{
-      //here sending data into comArr
-      console.log("inside getCompanyList: "+data);
-      this.comArr = Object.values(data);
-      console.log("Printing..."+this.comArr)
-    },
-    error=>{
-      console.log(error);
-    })
+   this.companyService.getAllCompany().subscribe(data=>{
+     this.comArr = Object.values(data);
+     console.log("sssssss "+this.comObj);
+   })
   }
 
   deleteCompany(cid:number){

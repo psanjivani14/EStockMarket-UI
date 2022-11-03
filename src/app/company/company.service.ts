@@ -21,6 +21,7 @@ export class CompanyService {
 
   addCompany(comObj:Company):Observable<Company>
   {
+    console.log("inside addCompany service "+comObj);
     return this.http.post<Company>(this.apiPost, comObj);
   }
 
