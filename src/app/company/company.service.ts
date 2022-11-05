@@ -22,6 +22,7 @@ export class CompanyService {
   addCompany(comObj:Company):Observable<Company>
   {
     console.log("inside addCompany service "+comObj);
+    alert("Company data saved successfully..!");
     return this.http.post<Company>(this.apiPost, comObj);
   }
 
@@ -34,6 +35,7 @@ export class CompanyService {
 
   deleteCompany(cid:number):Observable<Company>
   {
+    alert("Company delete successfully..!!");
     return this.http.delete<Company>(`${this.apiDelete}/${cid} `);
   }
 

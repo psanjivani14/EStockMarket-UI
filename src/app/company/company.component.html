@@ -1,7 +1,13 @@
-<p>company works!</p>
-<h1>Welcome to E-StockMarket Application</h1>
-
-<div>
+<h1>E-StockMarketApp</h1>
+<hr>
+<div class="cform">
+    <nav>
+        <button mat-raised-button color="accent" type="submit">Add Company</button>
+        <input  type="text" placeholder="Enter Company Code" style="right: auto">
+        <button mat-raised-button type="submit" color="accent" style="margin-left: auto;">Search By Company Code</button>
+    </nav>
+</div>
+<!--<div>
     <form #compForm="ngForm" (ngSubmit)="addCompanyDetails()">
         <input name="companyCode" class="form-control" type="number" placeholder="Enter company code" [(ngModel)]="comObj.companyCode" required>
         <br>
@@ -15,14 +21,103 @@
         <br>
         <button type="submit">Add Company Details</button>
     </form>
-</div>
+</div>-->
 <hr>
-<marquee>See Company List below</marquee>
-<div>
-    <button type="button" (click)="getCompanyList()">View Company List</button><br><br>
 
-    <div *ngFor="let c of comArr">
-       {{c.companyCode}}-->{{c.companyName}}-->{{c.companyCeo}}-->{{c.website}}-->{{c.turnover}}-->
+<!--<div class="company-Container">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Add Company Details
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="company Codeee">
+           <mat-form-field>
+                <mat-label>Company Code</mat-label>
+                <input matInput placeholder="Placeholder"name="companyCode" [(ngModel)]="comObj.companyCode" required >
+            </mat-form-field>
+            <mat-form-field appearance="legacy">
+                <mat-label>Company Code</mat-label>
+                <input matInput placeholder="Placeholder">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+        </div>
+        <div class="company Name">
+            <mat-form-field>
+                <mat-label>Company Name</mat-label>
+                <input matInput placeholder="Placeholder"name="companyName" [(ngModel)]="comObj.companyName" required >
+            </mat-form-field>
+        </div>
+        <div class="company Ceo">
+            <mat-form-field>
+                <mat-label>Company CEO</mat-label>
+                <input matInput placeholder="Placeholder"name="companyCeo" [(ngModel)]="comObj.companyCeo" required >
+            </mat-form-field>
+        </div>
+        <div class="company turnover">
+            <mat-form-field>
+                <mat-label>Company Turnover</mat-label>
+                <input matInput placeholder="Placeholder"name="turnover" [(ngModel)]="comObj.turnover" required >
+            </mat-form-field>
+        </div>
+        <div class="company Website">
+            <mat-form-field>
+                <mat-label>Company Website</mat-label>
+                <input matInput placeholder="Placeholder"name="website" [(ngModel)]="comObj.website" required >
+            </mat-form-field>
+        </div>
+        <mat-action-row>
+            <div class="container-fluid-padding">
+                <div class="row">
+                    <div class="col-md-2" style="margin-left: 60px;">
+                        <div class="example-button-container">
+                            <button mat-mini-fab color="accent" aria-label="Example icon button" type="submit"  (click)="addCompanyDetails()">
+                            <mat-icon>plus-one</mat-icon>
+                        </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-action-row>
+    </mat-expansion-panel>
+</div>-->
+<marquee>See Company List below</marquee>
+
+   <button mat-raised-button type="button" (click)="getCompanyList()">View Company List</button><br><br>
+   <div class="container">
+    <table class="table table-hover table-dark">
+      <tbody >
+          <tr>
+              <th>Company Code</th>
+              <th>Company Name</th>
+              <th>Company CEO</th>
+              <th>Website</th>
+              <th>Turnover</th>
+              <th>Actions</th>
+          </tr>
+         <tr *ngFor="let s of comArr">
+          <td>{{s.companyCode}}</td>
+          <td>{{s.companyName}}</td>
+          <td>{{s.companyCeo}}</td>
+          <td>{{s.website}}</td>
+          <td>{{s.turnover}}</td>
+          <td>
+            <button type="button"  mat-raised-button color="accent" routerLink="/stockPage" onclick="addStock(s.companyCode, stockObj)">Add Stock Price</button>
+            <button type="button"  mat-raised-button color="accent" (click)="deleteCompany(s.companyCode)">Delete Company</button>
+            <button type="button" mat-raised-button color="accent" (click)="updateCompany(s)">Update Company</button>
+          </td>
+          </tr>
+      </tbody>
+    </table>
+  </div> 
+
+   <!--<div *ngFor="let c of comArr">
+        {{c.companyCode}}->{{c.companyName}}->{{c.companyCeo}}->{{c.website}}->{{c.turnover}}->{{c.stockPrice}}
        <button type="button" class="btn btn-danger" (click)="deleteCompany(c.companyCode)">Delete Company</button>
-    </div>
-</div>
+       <button type="button" class="btn btn-info" (click)="updateCompany(c)">Update Company</button>
+    </div>-->
+<br>
+
+

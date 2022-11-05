@@ -1,7 +1,8 @@
 h1{
-    background-color: blanchedalmond;
-    font-size: medium;
-    color: brown;
+    background-color: black;
+    font-size: large;
+    color: blanchedalmond;
+    height: auto;
 }
 
 marquee
@@ -9,3 +10,40 @@ marquee
     background-color: magenta;
     color: yellow;
 }
+
+.btn {
+    background-color: whitesmoke;
+    font-size: large;
+    border: plum;
+    left: auto;
+}
+
+.btn1 {
+    background-color: plum;
+    font-size: large;
+    border: plum;
+    right: auto;
+    display: block;
+ 
+}
+.cform{
+    background-color:whitesmoke;
+    font-size: large;
+    nav-right: auto;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 1px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
