@@ -5,7 +5,7 @@ import { CompanyComponent } from './company/company.component';
 import { StockComponent } from './stock/stock.component';
 
 const routes: Routes = [
-  {path: "stockPage", component:StockComponent}
+  {path: "stockList", component:StockComponent}
 ];
 
 @NgModule({

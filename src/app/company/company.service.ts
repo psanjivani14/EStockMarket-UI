@@ -41,10 +41,11 @@ export class CompanyService {
 
   getCompanyById(cid:number):Observable<Company>
   {
+    alert("Updating company details...");
     return this.http.get<Company>(`${this.apiGetById}/${cid}`);
   }
 
-  updateCompany(comObj:Company):Observable<Company>
+  updateCompany(comObj:Company, id:number):Observable<Company>
   {
     return this.http.put<Company>(this.apiUpdate, comObj);
   }

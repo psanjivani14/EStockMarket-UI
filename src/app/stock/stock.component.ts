@@ -16,9 +16,11 @@ export class StockComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  stockObj: Stock = new Stock();
+  public stockObj: Stock = new Stock();
   stockArr: Array<Stock> =[];
   data:{} | any;
+
+
 
   getStock(cid:number){
     this.stockService.getAllStock(cid).subscribe(data=>{
@@ -33,6 +35,7 @@ export class StockComponent implements OnInit {
   {
     this.stockService.addStock(cid, stock).subscribe(data=>{
       this.data = JSON.stringify(data);
+      this.stockObj = this.data;
       this.stockArr.push(this.data);
       alert("Stock data added to Stock and Company");
     })

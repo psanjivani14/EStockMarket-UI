@@ -17,6 +17,7 @@ private apiGetStock:string ='http://localhost:8082/api/v1.0/market/stock/getAllS
 
   addStock(cid:number, stock:Stock):Observable<Stock>
   {
+    alert("Adding stock details...")
     return this.http.post<Stock>(`${this.apiPosStock}/${cid}`, stock);
   }
 

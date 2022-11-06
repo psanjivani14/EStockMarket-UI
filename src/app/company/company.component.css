@@ -5,45 +5,9 @@ h1{
     height: auto;
 }
 
-marquee
+table
 {
-    background-color: magenta;
-    color: yellow;
+ background-color: whitesmoke;
+ border: 0ch;
+ table-layout: auto;
 }
-
-.btn {
-    background-color: whitesmoke;
-    font-size: large;
-    border: plum;
-    left: auto;
-}
-
-.btn1 {
-    background-color: plum;
-    font-size: large;
-    border: plum;
-    right: auto;
-    display: block;
- 
-}
-.cform{
-    background-color:whitesmoke;
-    font-size: large;
-    nav-right: auto;
-}
-
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 1px;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }

@@ -12,19 +12,18 @@ import { CompanyService } from './company.service';
 })
 export class CompanyComponent implements OnInit {
 
-  constructor(private companyService:CompanyService, private http:HttpClient, private router: Router) { }
+  constructor(private companyService:CompanyService, private http:HttpClient, private router:Router) { }
   
   ngOnInit(): void {
+    window.location.reload;
+    this.getCompanyList();
   }
 
    public comObj:Company = new Company();
   public comArr:Array<Company>=[];
 
   data:{}|any;
-
-  onClickViewCompany(){
-    this.router.navigate(['/company']);
-  }
+  editedCompany: any = {};
 
   addCompanyDetails()
   {
@@ -61,13 +60,24 @@ export class CompanyComponent implements OnInit {
     })
   }
 
-  updateCompany(com:Company)
-  {
-    this.companyService.getCompanyById(com.companyCode).subscribe(data=>{
-      console.log("p1:: "+data);
-      
+  updateCompany(companyObj:Company){
+    this.editedCompany=companyObj;
+    this.companyService.getCompanyById(companyObj.companyCode).subscribe(
+      (data)=>{
+        data.companyName=companyObj.companyName;
+        data.companyCeo=companyObj.companyCeo;
+        data.website=companyObj.website;
+        data.turnover=companyObj.turnover;
+        this.companyService.updateCompany(companyObj,companyObj.companyCode).subscribe(
+          (d)=>{
+            this.getCompanyList();
+          } ,
+    (error)=>{
+      console.log(error);
     })
-  }
+  })
+
+}
 
   comp:Company = new Company();
   compArr: Array<Company>=[];
