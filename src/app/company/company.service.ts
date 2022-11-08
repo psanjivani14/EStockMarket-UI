@@ -38,15 +38,16 @@ export class CompanyService {
     alert("Company delete successfully..!!");
     return this.http.delete<Company>(`${this.apiDelete}/${cid} `);
   }
-
+  
   getCompanyById(cid:number):Observable<Company>
   {
-    alert("Updating company details...");
+    alert("Serching company details...");
     return this.http.get<Company>(`${this.apiGetById}/${cid}`);
   }
 
-  updateCompany(comObj:Company, id:number):Observable<Company>
+  updateCompany(comObj:Company):Observable<Company>
   {
+    alert("Updating company details..");
     return this.http.put<Company>(this.apiUpdate, comObj);
   }
 

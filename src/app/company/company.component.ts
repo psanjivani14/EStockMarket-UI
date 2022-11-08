@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CanMatchFn, Route, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Stock } from '../stock/stock';
 import { Company } from './company';
 import { CompanyService } from './company.service';
 
@@ -12,6 +13,7 @@ import { CompanyService } from './company.service';
 })
 export class CompanyComponent implements OnInit {
 
+  
   constructor(private companyService:CompanyService, private http:HttpClient, private router:Router) { }
   
   ngOnInit(): void {
@@ -19,11 +21,13 @@ export class CompanyComponent implements OnInit {
     this.getCompanyList();
   }
 
-   public comObj:Company = new Company();
+  public comObj:Company = new Company();
+  //@Input() comObj1=this.comObj;
   public comArr:Array<Company>=[];
+  stockObj:Stock = new Stock();
 
   data:{}|any;
-  editedCompany: any = {};
+  updatedArr: any = {};
 
   addCompanyDetails()
   {
@@ -44,7 +48,6 @@ export class CompanyComponent implements OnInit {
   getCompanyList(){
    this.companyService.getAllCompany().subscribe(data=>{
      this.data = JSON.stringify(data);
-     console.log("after stringify..."+this.data);
      this.comArr = Object.values(data);
      console.log("sssssss "+this.comObj);
    })
@@ -61,14 +64,14 @@ export class CompanyComponent implements OnInit {
   }
 
   updateCompany(companyObj:Company){
-    this.editedCompany=companyObj;
+    this.updatedArr=companyObj;
     this.companyService.getCompanyById(companyObj.companyCode).subscribe(
       (data)=>{
         data.companyName=companyObj.companyName;
         data.companyCeo=companyObj.companyCeo;
         data.website=companyObj.website;
         data.turnover=companyObj.turnover;
-        this.companyService.updateCompany(companyObj,companyObj.companyCode).subscribe(
+        this.companyService.updateCompany(companyObj).subscribe(
           (d)=>{
             this.getCompanyList();
           } ,
@@ -85,12 +88,22 @@ export class CompanyComponent implements OnInit {
   getCompanyById(cid:number)
   {
     this.companyService.getCompanyById(cid).subscribe(data=>{
+      console.log("comp component data "+this.data);
       this.compArr = Object.values(data);
-      this.data = JSON.stringify(data);
-      console.log("comp component "+this.data);
+      console.log("comp component compArr "+this.compArr);
+     // this.data = JSON.stringify(data);
+     this.comp = data;
+     console.log("comp component  comp "+this.comp);
       alert("Serch result is given.!");
 
     })
+  }
+
+  onClickEvent(id:number)
+  {
+    console.log("inside onClickEvent...")
+    this.router.navigate(['/StockComponent']);
+    
   }
   
 }

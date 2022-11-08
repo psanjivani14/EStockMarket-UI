@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Company } from '../company/company';
 import { Stock } from './stock';
 import { StockService } from './stock.service';
 
@@ -10,7 +11,7 @@ import { StockService } from './stock.service';
 })
 export class StockComponent implements OnInit {
 
-  constructor(private stockService: StockService, private http:HttpClient) 
+  constructor(public stockService: StockService, private http:HttpClient) 
   { }
 
   ngOnInit(): void {
@@ -19,7 +20,8 @@ export class StockComponent implements OnInit {
   public stockObj: Stock = new Stock();
   stockArr: Array<Stock> =[];
   data:{} | any;
-
+  comObj:Company = new Company();
+  public comArr:Array<Company>=[];
 
 
   getStock(cid:number){
@@ -30,12 +32,13 @@ export class StockComponent implements OnInit {
       console.log(error);
     })
   }
-
+  
   addStock(cid:number, stock:Stock)
   {
+    
     this.stockService.addStock(cid, stock).subscribe(data=>{
       this.data = JSON.stringify(data);
-      this.stockObj = this.data;
+     // this.stockObj = this.data;
       this.stockArr.push(this.data);
       alert("Stock data added to Stock and Company");
     })

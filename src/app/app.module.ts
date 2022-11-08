@@ -21,6 +21,10 @@ import { AppComponent } from './app.component';
 import { CompanyComponent } from './company/company.component';
 import { StockComponent } from './stock/stock.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { DisplayCompanyDetailsComponent } from './display-company-details/display-company-details.component';
+import { CompanyDetailsComponent } from './company/company-details/company-details.component';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
@@ -28,6 +32,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     CompanyComponent,
     StockComponent,
+    DisplayCompanyDetailsComponent,
+    CompanyDetailsComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatCardModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,49 +1,31 @@
 
-<div>
-    <form #readerForm="ngForm" (ngSubmit)="addStock(stockObj.comp_code_fk, stockObj)">
-        <input name="stockPrice" class="form-control" type="number" placeholder="Enter stock price" [(ngModel)]="stockObj.stockPrice" required>
-        <br>
-        <input name="issueAt" class="form-control" type="string" placeholder="Select the date" [(ngModel)]="stockObj.issueAt" required>
-        <br>
-        <input name="comp_code_fk" class="form-control" type="number" placeholder="Enter company id" [(ngModel)]="stockObj.comp_code_fk" required>
-        <br>
-        <button type="submit">Add Stock Details</button>
-    </form>
-</div>
-<hr>
-<div *ngFor="let s of stockArr">
-    {{s.comp_code_fk}}-->{{s.stockPrice}}-->{{s.issueAt}}
-</div>
-===============
-<div class="modal fade" id="UpdateStockModal" tabindex="-1" aria-labelledby="updateStockLabel" aria-hidden="true">
+  <div class="modal fade" id="addingStockModal" tabindex="-1" data-mdb-backdrop="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="updateStockLabel">Stock Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <h1>Add stock Details</h1>
-
-                <div>
-                    <form #companyForm="ngForm">
-
-                        <input name="stockPrice" class="form-control" type="number" placeholder="Enter stock price"
-                            [(ngModel)]="stockObj.stockPrice">
-                        <br>
-
-                        <input name="issueAt" class="form-control" type="string"
-                            placeholder="Enter issue date" [(ngModel)]="stockObj.issueAt" required>
-                        <br>
-
-                        <input name="comp_code_fk" class="form-control" type="number" placeholder="Enter company code"
-                            [(ngModel)]="stockObj.comp_code_fk" required>
-                        <br>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
-                    </form>
-                </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add stock Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        
+            <div>
+            <form #stockForm="ngForm" (ngSubmit)="addStock(stockObj.comp_code_fk, stockObj)">
+            
+            <input name="stockPrice" class="form-control" type="number" placeholder="Enter Stock price" [(ngModel)]="stockObj.stockPrice" required>
+            <br>
+            
+            <input name="timeStamp" class="form-control" type="datetime-local" placeholder="Enter Date" [(ngModel)]="stockObj.issueAt" required>
+            <br>
+            
+            <input name="company_code_FK" class="form-control" type="number" placeholder="Enter company" [(ngModel)]="stockObj.comp_code_fk" required>
+            <br>
+            
+            <button type="submit" class="btn btn-primary">Add Stock Details</button>
+            
+            </form>
             </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+<router-outlet></router-outlet>
